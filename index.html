@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laysa Tavares | Nutricionista</title>
+    
+    <!-- Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: "#76B041", // Fresh Light Green
+                hover: "#5F8D34",
+                light: "#E3F0D3",
+              },
+              background: {
+                light: "#FFFFFF",
+                surface: "#F9FAFB",
+              },
+              text: {
+                main: "#1F2937",
+                muted: "#6B7280",
+              },
+            },
+            fontFamily: {
+              display: ["'Playfair Display'", "serif"],
+              body: ["'Inter'", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Global Scale and Scroll Settings */
+      html {
+        font-size: 115%; /* Increases site proportion */
+        scroll-padding-top: 6rem; /* Prevents fixed header from covering section titles */
+      }
+
+      /* Custom styles for things Tailwind handles awkwardly inline */
+      .gradient-text {
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        background-image: linear-gradient(to right, #76B041, #9CCC65);
+      }
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+      }
+      /* Hide scrollbar for IE, Edge and Firefox */
+      .scrollbar-hide {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+      }
+    </style>
+    
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.263.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+</head>
+  <body class="bg-background-light text-text-main antialiased selection:bg-primary selection:text-white">
+    <div id="root"></div>
+
+    <script type="text/babel" data-type="module">
+        import React, { useState, useEffect, useRef } from 'react';
+        import { createRoot } from 'react-dom/client';
+        import { 
+            Menu, X, Camera, Phone, ArrowRight, BadgeCheck, MapPin, 
+            Leaf, Brain, Utensils, Calendar, Laptop, Monitor, 
+            Star, Quote, ChevronLeft, ChevronRight, Instagram, Send 
+        } from 'lucide-react';
+
+        // --- Constants & Data ---
+        const SOCIAL_LINKS = {
+            instagram: "https://instagram.com/laysatavarees.nutri",
+            whatsapp: "https://wa.me/5573982141269",
+            facebook: "#",
+        };
+
+        const CONTACT_INFO = {
+            phone: "(73) 98214-1269",
+            location: "Ibirapuã - BA",
+            fullLocation: "R. Nilson Mendes Andrade, 213, Ibirapuã - BA, 45940-000",
+        };
+
+        const IMAGES = {
+            profile: "./profile.jpg",
+            testimonial1: "https://lh3.googleusercontent.com/aida-public/AB6AXuC23LSv8Yx1pjfORpNX4SHiOYMFK5ugQOHF_REi9H3oDkAxZUv09xLxNf85VfC3GHHm32PvaAVgionEKjqtbuKPF1wns4hv9hhZRTNaX5j4saMu2r-_9DL0X-blnD4UZXmQGl_qUGl7gkAAZA5FmQQljsFBjyU1rr2qyOHP-12p_dhYnqtv9QUeJadjT23AmVdAiqPKqls-A2lC0F0ELuDTbqJ-PadxKYybCK35YZn17HvK7p_6Pgs53dOzj1iLtahkCuc7zFnj1I8",
+            testimonial2: "https://lh3.googleusercontent.com/aida-public/AB6AXuCzwpi__GAEC2E3JItEWY2C0gKRSDODY9zceKoZ2MIcs_3pu0QvgkQRxT8GdT6qtnBCarpd19MbQLXyXLTdlGVCqpBruBLAe9GjwZzB4U9-wJ5hk6d0BBRYZd3yLELj1qjwE6UjWlzvSLdnPkTJ83XrFJcXIO19DuNzcXaTxbCK_6db7dqajNxTICQKwQ7rF_hFgT8Zp13i2NdoTNNLB_cauVsLUwfdGZIrwSznlX5Hk5tTwQQv30udFLnlbpGo24j0cGB2s1PZsFQ",
+            testimonial3: "https://lh3.googleusercontent.com/aida-public/AB6AXuA7iylC1LoOsU6uNMLIOzM4NcohOYxZhzfZfRy0f3O88wPiLEu7fWycWvcJfIhkF8yGHpsyCaar04iAXNJyYU4Lt5_Ze5qqwB0TqvaJc3Ym2gV4Y5Tu_RAjFWNVzgAJiRdvbe8szT7hW6lDR9SRpNDFV7v_J0K3PdnCgmLluk90wh-ygFMmj8028EKM9CpMXQRKAgYV1f4OwYCADe-04hFcEiKwDdUJGXk0oQdSwohezhXSBOYqeznHbqhIQRWHWL352x0ZzgnLdwA",
+        };
+
+        const METHODOLOGIES = [
+            {
+                id: 1,
+                title: "Emagrecimento",
+                description: "Estratégias científicas para perda de peso saudável e manutenção dos resultados.",
+                icon: 'leaf'
+            },
+            {
+                id: 2,
+                title: "Comportamento",
+                description: "Entender os gatilhos emocionais e criar novos hábitos duradouros.",
+                icon: 'brain'
+            },
+            {
+                id: 3,
+                title: "Reeducação",
+                description: "Aprender a comer bem, sem culpa e com prazer na alimentação.",
+                icon: 'utensils'
+            }
+        ];
+
+        const SERVICES = [
+            {
+                id: 1,
+                title: "Consulta Presencial",
+                description: "Atendimento completo em Ibirapuã-BA. Avaliação física detalhada com bioimpedância e plano alimentar personalizado.",
+                icon: 'calendar'
+            },
+            {
+                id: 2,
+                title: "Acompanhamento Online",
+                description: "Flexibilidade para cuidar da sua saúde de onde estiver. Videochamadas, suporte via WhatsApp.",
+                icon: 'laptop'
+            },
+            {
+                id: 3,
+                title: "Bioimpedância",
+                description: "Análise completa da sua composição corporal: percentual de gordura, massa muscular, nível de hidratação e idade metabólica.",
+                icon: 'monitor'
+            }
+        ];
+
+        const TESTIMONIALS = [
+            {
+                id: 1,
+                text: "Nunca imaginei que poderia comer o que gosto e ainda emagrecer. A Laysa mudou totalmente minha visão sobre comida. Perdi 10kg em 3 meses sem sofrimento!",
+                author: "Mariana Costa",
+                role: "Paciente há 6 meses",
+                image: IMAGES.testimonial1,
+                rating: 5
+            },
+            {
+                id: 2,
+                text: "Profissional excelente! O plano alimentar é super prático e cabe na rotina. Me sinto com muito mais energia e disposição no dia a dia.",
+                author: "Carlos Silva",
+                role: "Paciente há 2 meses",
+                image: IMAGES.testimonial2,
+                rating: 5
+            },
+            {
+                id: 3,
+                text: "A reeducação alimentar foi libertadora. Aprendi a lidar com minha ansiedade sem descontar na comida. Gratidão eterna!",
+                author: "Fernanda Lima",
+                role: "Paciente há 1 ano",
+                image: IMAGES.testimonial3,
+                rating: 5
+            },
+            {
+                id: 4,
+                text: "O método é fantástico. Não é dieta, é mudança de vida. Consegui controlar minha compulsão por doces e hoje me sinto muito mais saudável.",
+                author: "Juliana Mendes",
+                role: "Paciente há 4 meses",
+                image: IMAGES.testimonial1,
+                rating: 5
+            }
+        ];
+
+        // --- Components ---
+
+        const Navigation = () => {
+            const [isOpen, setIsOpen] = useState(false);
+            return (
+                <nav className="fixed w-full z-40 bg-white/90 backdrop-blur-md border-b border-gray-100">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex justify-between h-20 items-center">
+                    <div className="flex-shrink-0 flex items-center">
+                        <a href="#" className="flex items-center hover:opacity-80 transition-opacity cursor-pointer">
+                            <img src="./logo.png" alt="Laysa Tavares" className="h-20 w-auto" />
+                        </a>
+                    </div>
+                    <div className="hidden md:flex space-x-8 items-center">
+                        <a href="#about" className="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Sobre</a>
+                        <a href="#services" className="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Serviços</a>
+                        <a href="#testimonials" className="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Resultados</a>
+                        <a href="#contact" className="bg-primary hover:bg-primary-hover text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all shadow-lg hover:shadow-primary/30">Agendar</a>
+                    </div>
+                    <div className="md:hidden flex items-center">
+                        <button onClick={() => setIsOpen(!isOpen)} className="text-gray-500 hover:text-primary focus:outline-none p-2" aria-label="Menu">
+                        {isOpen ? <X size={28} /> : <Menu size={28} />}
+                        </button>
+                    </div>
+                    </div>
+                </div>
+                {isOpen && (
+                    <div className="md:hidden bg-white border-b border-gray-100 shadow-xl absolute w-full">
+                    <div className="px-4 pt-2 pb-6 space-y-2 sm:px-3">
+                        <a href="#about" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-green-50 transition-colors">Sobre</a>
+                        <a href="#services" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-green-50 transition-colors">Serviços</a>
+                        <a href="#testimonials" onClick={() => setIsOpen(false)} className="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-green-50 transition-colors">Resultados</a>
+                        <a href="#contact" onClick={() => setIsOpen(false)} className="block px-3 py-3 mt-4 text-center rounded-full text-base font-bold bg-primary text-white hover:bg-primary-hover shadow-md">Agendar Consulta</a>
+                    </div>
+                    </div>
+                )}
+                </nav>
+            );
+        };
+
+        const FloatingActions = () => {
+            return (
+                <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+                <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-12 h-12 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 flex items-center justify-center group relative">
+                    <Camera size={24} />
+                    <span className="absolute right-14 bg-white text-gray-800 text-xs font-bold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Instagram</span>
+                </a>
+                <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-14 h-14 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 flex items-center justify-center group relative">
+                    <Phone size={28} />
+                    <span className="absolute right-16 bg-white text-gray-800 text-xs font-bold px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Falar agora</span>
+                </a>
+                </div>
+            );
+        };
+
+        const Hero = () => {
+            return (
+                <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-gradient-to-b from-green-50/50 to-white">
+                <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-green-200/20 blur-3xl pointer-events-none"></div>
+
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+                    <div className="order-1 flex justify-center lg:justify-start w-full lg:w-1/2">
+                        <div className="relative group">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-primary to-green-200 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                        <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[450px] lg:h-[450px] rounded-full overflow-hidden border-4 border-white shadow-2xl">
+                            <img src={IMAGES.profile} alt="Laysa Tavares Nutricionista" className="w-full h-full object-cover transform transition duration-700 hover:scale-105"/>
+                        </div>
+                        <div className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 bg-white p-3 sm:p-4 rounded-xl shadow-xl flex items-center gap-3 border border-gray-50 animate-bounce [animation-duration:3s]">
+                            <span className="flex h-3 w-3 relative">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                            </span>
+                            <span className="text-xs sm:text-sm font-semibold text-gray-800">Agenda Aberta</span>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div className="order-2 w-full lg:w-1/2 text-center lg:text-left">
+                        <h2 className="text-primary font-semibold tracking-wider uppercase text-sm mb-4 bg-primary-light inline-block px-3 py-1 rounded-full">Nutrição & Saúde</h2>
+                        <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 text-gray-900 leading-tight">Laysa <br/><span className="gradient-text">Tavares</span></h1>
+                        <p className="text-lg sm:text-xl text-text-muted mb-8 max-w-lg mx-auto lg:mx-0 font-light leading-relaxed">Nutricionista especialista em emagrecimento, comportamento e reeducação alimentar. Transforme sua relação com a comida.</p>
+                        
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href={SOCIAL_LINKS.whatsapp} className="bg-primary hover:bg-primary-hover text-white px-8 py-4 rounded-full text-base font-medium transition-all shadow-xl hover:shadow-primary/30 flex items-center justify-center gap-2 group">
+                            Agende sua Consulta
+                            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                        </a>
+                        <a href="#about" className="bg-white hover:bg-gray-50 text-gray-800 border border-gray-200 px-8 py-4 rounded-full text-base font-medium transition-all flex items-center justify-center shadow-sm hover:shadow-md">Saiba Mais</a>
+                        </div>
+
+                        <div className="mt-12 flex items-center justify-center lg:justify-start gap-8 text-text-muted opacity-80">
+                        <div className="flex items-center gap-2">
+                            <BadgeCheck className="text-primary" size={20} />
+                            <span className="text-sm">CRN Validado</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <MapPin className="text-primary" size={20} />
+                            <span className="text-sm">{CONTACT_INFO.location}</span>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </section>
+            );
+        };
+
+        const Methodology = () => {
+            const getIcon = (iconName) => {
+                switch (iconName) {
+                case 'leaf': return <Leaf size={24} />;
+                case 'brain': return <Brain size={24} />;
+                case 'utensils': return <Utensils size={24} />;
+                default: return <Leaf size={24} />;
+                }
+            };
+
+            return (
+                <section id="about" className="py-20 bg-white">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <span className="text-primary font-medium tracking-widest text-xs uppercase mb-2 block">Minha Metodologia</span>
+                    <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-8">Muito além de uma dieta</h2>
+                    <p className="text-text-muted text-lg leading-relaxed mb-12">
+                    Acredito que o emagrecimento sustentável não vem de restrições severas, mas sim da compreensão do comportamento humano e da <strong className="text-primary font-semibold">reeducação alimentar</strong>. Meu objetivo é te guiar em uma jornada onde a saúde encontra o equilíbrio, respeitando sua individualidade e estilo de vida.
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {METHODOLOGIES.map((item) => (
+                        <div key={item.id} className="p-6 rounded-2xl bg-background-surface border border-gray-100 hover:border-primary/30 transition duration-300 hover:shadow-lg hover:shadow-green-100">
+                        <div className="w-12 h-12 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
+                            {getIcon(item.icon)}
+                        </div>
+                        <h3 className="font-display text-xl font-bold mb-2 text-gray-900">{item.title}</h3>
+                        <p className="text-sm text-text-muted">{item.description}</p>
+                        </div>
+                    ))}
+                    </div>
+                </div>
+                </section>
+            );
+        };
+
+        const Services = () => {
+            const getIcon = (iconName) => {
+                switch (iconName) {
+                case 'calendar': return <Calendar size={36} />;
+                case 'laptop': return <Laptop size={36} />;
+                case 'monitor': return <Monitor size={36} />;
+                default: return <Calendar size={36} />;
+                }
+            };
+
+            return (
+                <section id="services" className="py-20 bg-background-surface relative">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-16">
+                    <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900">Como posso te ajudar</h2>
+                    <div className="w-24 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {SERVICES.map((service) => (
+                        <div key={service.id} className="group relative bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden">
+                        <div className="absolute top-0 right-0 w-24 h-24 bg-primary-light rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500"></div>
+                        <div className="text-primary mb-6 relative z-10">{getIcon(service.icon)}</div>
+                        <h3 className="font-display text-2xl font-bold mb-4 text-gray-900 relative z-10">{service.title}</h3>
+                        <p className="text-text-muted mb-6 relative z-10">{service.description}</p>
+                        <a href="#contact" className="inline-flex items-center text-primary font-medium hover:text-primary-hover relative z-10">Saber mais <ArrowRight size={16} className="ml-1" /></a>
+                        </div>
+                    ))}
+                    </div>
+                </div>
+                </section>
+            );
+        };
+
+        const Testimonials = () => {
+            const scrollRef = useRef(null);
+
+            const scroll = (direction) => {
+                if (scrollRef.current) {
+                const { current } = scrollRef;
+                const firstCard = current.children[0];
+                const scrollAmount = firstCard ? firstCard.offsetWidth + 24 : 350;
+
+                if (direction === 'left') {
+                    current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                } else {
+                    current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+                }
+            };
+
+            return (
+                <section id="testimonials" className="py-20 bg-white overflow-hidden">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+                    <div>
+                        <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-2">Histórias de Sucesso</h2>
+                        <p className="text-text-muted">Veja o que meus pacientes dizem</p>
+                    </div>
+                    <div className="flex gap-2 mt-4 md:mt-0">
+                        <button onClick={() => scroll('left')} className="p-2 rounded-full border border-gray-200 hover:bg-gray-50 hover:text-primary transition text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/50" aria-label="Anterior"><ChevronLeft size={20} /></button>
+                        <button onClick={() => scroll('right')} className="p-2 rounded-full border border-gray-200 hover:bg-gray-50 hover:text-primary transition text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/50" aria-label="Próximo"><ChevronRight size={20} /></button>
+                    </div>
+                    </div>
+
+                    <div ref={scrollRef} className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4">
+                    {TESTIMONIALS.map((item) => (
+                        <div key={item.id} className="min-w-[100%] md:min-w-[calc(50%-12px)] lg:min-w-[calc(33.333%-16px)] snap-center bg-background-surface p-8 rounded-2xl border border-gray-100 hover:border-primary/20 transition-all duration-300 relative shadow-sm">
+                        <Quote className="text-primary/10 absolute top-4 right-4" size={60} />
+                        <div className="flex text-primary mb-4">
+                            {[...Array(item.rating)].map((_, i) => (
+                            <Star key={i} size={16} fill="currentColor" />
+                            ))}
+                        </div>
+                        <p className="text-gray-700 mb-6 italic relative z-10">"{item.text}"</p>
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden shrink-0">
+                            <img src={item.image} alt={item.author} className="w-full h-full object-cover" />
+                            </div>
+                            <div>
+                            <p className="font-bold text-sm text-gray-900">{item.author}</p>
+                            <p className="text-xs text-text-muted">{item.role}</p>
+                            </div>
+                        </div>
+                        </div>
+                    ))}
+                    </div>
+                </div>
+                </section>
+            );
+        };
+
+        const Footer = () => {
+            const [formData, setFormData] = useState({
+                name: '',
+                interest: 'Emagrecimento',
+                message: ''
+            });
+
+            const handleChange = (e) => {
+                const { name, value } = e.target;
+                setFormData(prev => ({
+                ...prev,
+                [name]: value
+                }));
+            };
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                const text = `*Novo contato pelo site*%0A%0A*Nome:* ${formData.name}%0A*Interesse:* ${formData.interest}%0A*Mensagem:* ${formData.message}`;
+                const phoneNumber = "5573982141269"; 
+                const url = `https://wa.me/${phoneNumber}?text=${text}`;
+                window.open(url, '_blank');
+            };
+
+            return (
+                <footer id="contact" className="bg-background-surface border-t border-gray-200 pt-20 pb-10">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
+                    <div className="md:sticky md:top-24">
+                        <h2 className="font-display text-4xl font-bold text-gray-900 mb-6">Pronto para transformar sua saúde?</h2>
+                        <p className="text-text-muted text-lg mb-8 max-w-md">Preencha o formulário ou entre em contato direto para começarmos sua jornada de transformação.</p>
+                        <div className="flex flex-col gap-4 mb-8">
+                        <div className="flex items-start gap-4 text-gray-700">
+                            <div className="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center text-primary shrink-0 mt-1"><MapPin size={20} /></div>
+                            <span className="text-lg leading-relaxed">{CONTACT_INFO.fullLocation}</span>
+                        </div>
+                        <div className="flex items-center gap-4 text-gray-700">
+                            <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-500 shrink-0"><Phone size={20} /></div>
+                            <a href={SOCIAL_LINKS.whatsapp} className="text-lg hover:text-green-500 transition">{CONTACT_INFO.phone}</a>
+                        </div>
+                        </div>
+                        <div className="w-full h-64 rounded-2xl overflow-hidden shadow-md border border-gray-100 bg-gray-100 relative group">
+                        <iframe width="100%" height="100%" title="Localização do Consultório" scrolling="no" src="https://maps.google.com/maps?q=R.+Nilson+Mendes+Andrade,+213,+Ibirapu%C3%A3+-+BA&t=&z=16&ie=UTF8&iwloc=&output=embed" style={{ border: 0 }} loading="lazy" className="grayscale group-hover:grayscale-0 transition-all duration-500"></iframe>
+                        </div>
+                    </div>
+
+                    <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-lg">
+                        <h3 className="font-display text-2xl font-bold text-gray-900 mb-6">Envie uma mensagem</h3>
+                        <form onSubmit={handleSubmit} className="space-y-4">
+                        <div>
+                            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Nome</label>
+                            <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-gray-50 focus:bg-white" placeholder="Seu nome completo"/>
+                        </div>
+                        <div>
+                            <label htmlFor="interest" className="block text-sm font-medium text-gray-700 mb-1">Tenho interesse em</label>
+                            <div className="relative">
+                            <select id="interest" name="interest" value={formData.interest} onChange={handleChange} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-gray-50 focus:bg-white appearance-none cursor-pointer text-gray-700">
+                                <option value="Emagrecimento">Emagrecimento</option>
+                                <option value="Hipertrofia">Hipertrofia</option>
+                                <option value="Reeducação Alimentar">Reeducação Alimentar</option>
+                                <option value="Nutrição Comportamental">Nutrição Comportamental</option>
+                                <option value="Outro">Outro Assunto</option>
+                            </select>
+                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Mensagem</label>
+                            <textarea id="message" name="message" required rows={4} value={formData.message} onChange={handleChange} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-gray-50 focus:bg-white resize-none" placeholder="Como posso te ajudar?"></textarea>
+                        </div>
+                        <button type="submit" className="w-full bg-primary hover:bg-primary-hover text-white px-8 py-4 rounded-xl text-lg font-bold transition-all shadow-lg hover:shadow-primary/30 flex items-center justify-center gap-3 mt-2">
+                            <Send size={20} />
+                            Enviar no WhatsApp
+                        </button>
+                        </form>
+                    </div>
+                    </div>
+
+                    <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p className="text-sm text-text-muted">© 2026 Laysa Tavares Nutricionista. Todos os direitos reservados.</p>
+                    <div className="flex space-x-6 text-text-muted">
+                        <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition"><Instagram size={20} /></a>
+                    </div>
+                    </div>
+                </div>
+                </footer>
+            );
+        };
+
+        const App = () => {
+            return (
+                <div className="min-h-screen">
+                <Navigation />
+                <main>
+                    <Hero />
+                    <Methodology />
+                    <Services />
+                    <Testimonials />
+                </main>
+                <Footer />
+                <FloatingActions />
+                </div>
+            );
+        };
+
+        // --- Render ---
+        const rootElement = document.getElementById('root');
+        if (rootElement) {
+            const root = createRoot(rootElement);
+            root.render(<App />);
+        }
+    </script>
+  </body>
+
+</html>
