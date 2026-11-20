@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Laysa Tavares | Nutricionista em Ibirapuã-BA</title>
+<meta name="description" content="Nutricionista em Ibirapuã-BA e online: emagrecimento, nutrição comportamental, reeducação alimentar e avaliação por bioimpedância. Agende sua consulta pelo WhatsApp.">
+<meta name="theme-color" content="#141d16">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Laysa Tavares | Nutricionista">
+<meta property="og:description" content="Emagrecimento, comportamento e reeducação alimentar. Presencial em Ibirapuã-BA e online.">
+<link rel="canonical" href="https://laysatavaresnutri.vercel.app/site/">
+<meta property="og:url" content="https://laysatavaresnutri.vercel.app/site/">
+<meta property="og:image" content="https://laysatavaresnutri.vercel.app/assets/img/compartilhar.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../assets/img/laysa-arco-800.webp">
+<link rel="stylesheet" href="../assets/vendor/lenis.css">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>
+  document.documentElement.classList.replace('no-js', 'js');
+  try { if (sessionStorage.getItem('lt-abertura') || matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('sem-abertura'); } catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- Abertura: monograma, depois a cortina sobe em curva e revela o topo. Só na primeira visita da sessão. -->
+<div class="abertura" aria-hidden="true">
+  <div class="abertura_marca">
+    <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="56"/></svg>
+    <span>LT</span>
+  </div>
+</div>
+
+<!-- Interface fixa: muda de cor conforme o fundo da seção (data-tema). -->
+<header class="ui" data-ui="escuro">
+  <a class="selo" href="#inicio" aria-label="Laysa Tavares, voltar ao início">
+    <svg class="selo_anel" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="selo-c" d="M60,60 m-47,0 a47,47 0 1,1 94,0 a47,47 0 1,1 -94,0"/></defs><text><textPath href="#selo-c" textLength="292">LAYSA TAVARES · NUTRICIONISTA · </textPath></text></svg>
+    <span class="selo_m" aria-hidden="true">LT</span>
+  </a>
+  <nav class="ui_nav" aria-label="Seções">
+    <a href="#metodo">Método</a>
+    <a href="#atendimentos">Atendimentos</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#contato">Contato</a>
+  </nav>
+  <button class="menu_btn" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu_btn_t">Menu</span><span class="menu_dots" aria-hidden="true"><i></i><i></i></span>
+  </button>
+</header>
+
+<div class="progresso" aria-hidden="true"><span>Role</span><i><b></b></i></div>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="menu_in">
+    <nav class="menu_links" aria-label="Menu principal">
+      <a href="#inicio">Início</a>
+      <a href="#metodo">Método</a>
+      <a href="#atendimentos">Atendimentos</a>
+      <a href="#bioimpedancia">Bioimpedância</a>
+      <a href="#sobre">Sobre a Laysa</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="menu_pe">
+      <a class="btn btn--claro" href="https://wa.me/5573982141269?text=Ol%C3%A1%2C%20Laysa!%20Vim%20pelo%20site%20e%20quero%20agendar%20uma%20consulta." target="_blank" rel="noopener noreferrer">Agendar no WhatsApp</a>
+      <p>R. Nilson Mendes Andrade, 213 · Ibirapuã-BA<br><a href="https://instagram.com/laysatavarees.nutri" target="_blank" rel="noopener noreferrer">@laysatavarees.nutri</a></p>
+    </div>
+  </div>
+</div>
+
+<main id="conteudo">
+
+  <!-- 1. TOPO -->
+  <section class="topo" id="inicio" data-tema="escuro">
+    <div class="topo_fundo" aria-hidden="true">
+      <!-- Cenas opcionais (Nano Banana): assets/img/cenas/topo-dia.webp e topo-noite.webp. Com os arquivos na pasta, acrescentar data-ligada na div abaixo; com as duas, aparece o botão Manhã / Noite. -->
+      <div class="topo_cena" data-cena-dia="../assets/img/cenas/topo-dia.webp" data-cena-noite="../assets/img/cenas/topo-noite.webp"></div>
+    </div>
+    <canvas class="poeira" aria-hidden="true"></canvas>
+
+    <div class="topo_palco">
+      <figure class="topo_arco" data-entrada>
+        <img src="../assets/img/laysa-arco-800.webp" srcset="../assets/img/laysa-arco-520.webp 520w, ../assets/img/laysa-arco-800.webp 800w" sizes="(max-width: 767px) 64vw, 30vw" width="800" height="1066" alt="Retrato da nutricionista Laysa Tavares" fetchpriority="high">
+      </figure>
+      <p class="topo_lado topo_lado--e" data-entrada>Uma nova relação</p>
+      <p class="topo_lado topo_lado--d" data-entrada>com a comida</p>
+      <h1 class="topo_titulo">
+        <span class="sr-only">Laysa Tavares, nutricionista em Ibirapuã-BA</span>
+        <span class="topo_logo" aria-hidden="true">
+          <img class="topo_logo_serifa" src="../assets/img/logo-serifa-claro.png" width="1599" height="470" alt="">
+          <img class="topo_logo_escrita" src="../assets/img/logo-manuscrito-claro.png" width="1599" height="470" alt="">
+        </span>
+      </h1>
+      <p class="topo_frase" data-entrada>Uma nova relação com a comida</p>
+    </div>
+
+    <div class="topo_pe">
+      <a class="anel" href="https://wa.me/5573982141269?text=Ol%C3%A1%2C%20Laysa!%20Vim%20pelo%20site%20e%20quero%20agendar%20uma%20consulta." target="_blank" rel="noopener noreferrer" data-entrada>
+        <span class="anel_t">Agende sua consulta</span>
+        <svg class="anel_s" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <p class="agenda" data-entrada><i aria-hidden="true"></i>Agenda aberta</p>
+      <p class="topo_nota" data-entrada>Presencial em Ibirapuã-BA e online</p>
+    </div>
+
+    <div class="clima" hidden>
+      <button type="button" aria-pressed="true" data-clima="dia">Manhã</button>
+      <button type="button" aria-pressed="false" data-clima="noite">Noite</button>
+    </div>
+  </section>
+
+  <!-- 2. O QUE EU ACREDITO (momento: as palavras acendem com a rolagem) -->
+  <section class="manifesto" id="manifesto" data-tema="escuro">
+    <div class="wrap">
+      <p class="rotulo">O que eu acredito</p>
+      <blockquote class="manifesto_q">
+        <p data-palavras>O emagrecimento que dura não nasce da restrição. Nasce de entender o seu comportamento e de reaprender a comer, sem culpa e com prazer.</p>
+      </blockquote>
+      <p class="manifesto_assin">Laysa Tavares · Nutricionista</p>
+    </div>
+  </section>
+
+  <!-- 3. MÉTODO (no computador anda para o lado enquanto você rola) -->
+  <section class="metodo" id="metodo" data-tema="claro">
+    <div class="metodo_trilho">
+      <div class="metodo_abre">
+        <p class="rotulo">Minha metodologia</p>
+        <h2 class="titulo">Muito além <span class="quebra">de uma <em>dieta</em></span></h2>
+        <p class="texto">Meu trabalho é te guiar numa jornada em que a saúde encontra o equilíbrio, respeitando a sua individualidade e o seu estilo de vida.</p>
+      </div>
+      <article class="pilar">
+        <span class="pilar_n">01</span>
+        <svg class="pilar_i" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><path d="M32 58V22"/><path d="M32 36c-10 0-17-7-18-18 11 0 18 7 18 18Z"/><path d="M32 28c9 0 15-6 16-15-9 0-15 6-16 15Z"/></svg>
+        <h3>Emagrecimento</h3>
+        <p>Estratégias com base científica para perder peso com saúde e manter o resultado depois.</p>
+      </article>
+      <article class="pilar">
+        <span class="pilar_n">02</span>
+        <svg class="pilar_i" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><circle cx="32" cy="32" r="22"/><path d="M20 34c4-8 8 8 12 0s8 8 12 0"/></svg>
+        <h3>Comportamento</h3>
+        <p>Entender os gatilhos emocionais por trás da fome e construir hábitos que duram.</p>
+      </article>
+      <article class="pilar">
+        <span class="pilar_n">03</span>
+        <svg class="pilar_i" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><circle cx="32" cy="34" r="20"/><circle cx="32" cy="34" r="12"/><path d="M32 8v6M24 10l2 5M40 10l-2 5"/></svg>
+        <h3>Reeducação</h3>
+        <p>Aprender a comer bem, sem culpa e com prazer, com comida de verdade e que cabe na sua rotina.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 4. ATENDIMENTOS -->
+  <section class="atend" id="atendimentos" data-tema="escuro">
+    <div class="wrap atend_grade">
+      <div class="atend_cabeca">
+        <p class="rotulo">Atendimentos</p>
+        <h2 class="titulo">Como posso <em>te ajudar</em></h2>
+      </div>
+      <figure class="atend_foto">
+        <img src="../assets/img/laysa-fechado-640.webp" srcset="../assets/img/laysa-fechado-420.webp 420w, ../assets/img/laysa-fechado-640.webp 640w" sizes="(max-width: 1023px) 80vw, 30vw" width="640" height="800" loading="lazy" alt="Retrato de Laysa Tavares com a mão apoiada no queixo">
+      </figure>
+      <ol class="atend_lista">
+        <li class="atend_item">
+          <span class="atend_n">01</span>
+          <div class="atend_c">
+            <h3>Consulta presencial</h3>
+            <p>Atendimento completo no consultório em Ibirapuã-BA, com avaliação física por bioimpedância e plano alimentar personalizado.</p>
+            <a class="link" href="https://wa.me/5573982141269?text=Ol%C3%A1%2C%20Laysa!%20Quero%20agendar%20uma%20consulta%20presencial." target="_blank" rel="noopener noreferrer">Agendar presencial <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+        <li class="atend_item">
+          <span class="atend_n">02</span>
+          <div class="atend_c">
+            <h3>Acompanhamento online</h3>
+            <p>Para cuidar da sua saúde de onde você estiver, com consultas por videochamada e suporte pelo WhatsApp.</p>
+            <a class="link" href="https://wa.me/5573982141269?text=Ol%C3%A1%2C%20Laysa!%20Quero%20saber%20sobre%20o%20acompanhamento%20online." target="_blank" rel="noopener noreferrer">Agendar online <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+        <li class="atend_item">
+          <span class="atend_n">03</span>
+          <div class="atend_c">
+            <h3>Bioimpedância</h3>
+            <p>Análise da sua composição corporal: percentual de gordura, massa muscular, hidratação e idade metabólica.</p>
+            <a class="link" href="#bioimpedancia">Entender a avaliação <span aria-hidden="true">↓</span></a>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 5. BIOIMPEDÂNCIA (momento: o anel se desenha com a rolagem) -->
+  <section class="bio" id="bioimpedancia" data-tema="claro">
+    <div class="wrap bio_grade">
+      <div class="bio_texto">
+        <p class="rotulo">Bioimpedância</p>
+        <h2 class="titulo">O que a balança <em>não mostra</em></h2>
+        <p class="texto">A balança mostra um número. A bioimpedância mostra do que ele é feito: quanto é gordura, quanto é músculo e como está a sua hidratação. É com esses dados que o seu plano é ajustado.</p>
+        <a class="btn btn--escuro" href="https://wa.me/5573982141269?text=Ol%C3%A1%2C%20Laysa!%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20com%20bioimped%C3%A2ncia." target="_blank" rel="noopener noreferrer">Agendar avaliação</a>
+      </div>
+      <div class="bio_anel">
+        <svg viewBox="0 0 520 520" aria-hidden="true">
+          <circle class="bio_base" cx="260" cy="260" r="200"/>
+          <circle class="bio_giro" cx="260" cy="260" r="168"/>
+          <path class="bio_arco" d="M277.4 60.8A200 200 0 0 1 459.2 242.6"/>
+          <path class="bio_arco" d="M459.2 277.4A200 200 0 0 1 277.4 459.2"/>
+          <path class="bio_arco" d="M242.6 459.2A200 200 0 0 1 60.8 277.4"/>
+          <path class="bio_arco" d="M60.8 242.6A200 200 0 0 1 242.6 60.8"/>
+        </svg>
+        <p class="bio_centro"><span>Composição</span><em>corporal</em></p>
+        <ul class="bio_itens">
+          <li class="bio_i bio_i--1"><span>01</span>Percentual de gordura</li>
+          <li class="bio_i bio_i--2"><span>02</span>Massa muscular</li>
+          <li class="bio_i bio_i--3"><span>03</span>Hidratação</li>
+          <li class="bio_i bio_i--4"><span>04</span>Idade metabólica</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CAMINHO -->
+  <section class="caminho" id="caminho" data-tema="claro">
+    <div class="wrap">
+      <p class="rotulo">Como funciona</p>
+      <h2 class="titulo">Seu cuidado, <em>passo a passo</em></h2>
+      <div class="caminho_linha" aria-hidden="true">
+        <svg viewBox="0 0 1200 140" preserveAspectRatio="none"><path d="M0 92C120 30 230 22 320 64S520 128 620 84 820 18 920 52 1110 108 1200 66"/></svg>
+      </div>
+      <ol class="caminho_passos">
+        <li><span class="caminho_n">01</span><h3>Escuta</h3><p>Conversamos sobre a sua rotina, a sua história e a sua relação com a comida.</p></li>
+        <li><span class="caminho_n">02</span><h3>Avaliação</h3><p>No consultório, a bioimpedância mostra o seu ponto de partida.</p></li>
+        <li><span class="caminho_n">03</span><h3>Plano</h3><p>Um plano alimentar feito para a sua rotina, com comida que você gosta.</p></li>
+        <li><span class="caminho_n">04</span><h3>Acompanhamento</h3><p>Ajustes ao longo do caminho, com suporte pelo WhatsApp.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 7. SOBRE -->
+  <section class="sobre" id="sobre" data-tema="escuro">
+    <div class="wrap sobre_grade">
+      <figure class="sobre_foto">
+        <img src="../assets/img/laysa-retrato-1066.webp" srcset="../assets/img/laysa-retrato-640.webp 640w, ../assets/img/laysa-retrato-1066.webp 1066w" sizes="(max-width: 1023px) 90vw, 42vw" width="1066" height="1066" loading="lazy" alt="Laysa Tavares sentada, de blazer preto, olhando para a câmera">
+      </figure>
+      <div class="sobre_texto">
+        <p class="rotulo">Quem vai te acompanhar</p>
+        <h2 class="titulo">Prazer, <em>sou a Laysa</em></h2>
+        <p class="texto">Sou nutricionista e trabalho com emagrecimento, nutrição comportamental e reeducação alimentar.</p>
+        <p class="texto">Acredito num cuidado que respeita a sua individualidade: nada de dieta da moda ou de cardápio impossível. Cada plano parte da sua rotina, do que você gosta de comer e do que faz sentido para o seu corpo.</p>
+        <!-- Formação e especializações: preencher com os dados da Laysa e tirar o hidden. -->
+        <p class="sobre_form" hidden></p>
+        <p class="sobre_crn" data-crn hidden>CRN-5 <!-- número --></p>
+        <a class="anel anel--claro" href="https://wa.me/5573982141269?text=Ol%C3%A1%2C%20Laysa!%20Vim%20pelo%20site%20e%20queria%20conversar%20com%20voc%C3%AA." target="_blank" rel="noopener noreferrer">
+          <span class="anel_t">Falar com a Laysa</span>
+          <svg class="anel_s" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. DEPOIMENTOS: só entram quando houver depoimentos REAIS, com autorização das pacientes. Tirar o hidden e preencher. -->
+  <section class="depo" id="depoimentos" data-tema="claro" hidden>
+    <div class="wrap">
+      <p class="rotulo">Quem já passou por aqui</p>
+      <h2 class="titulo">Histórias <em>reais</em></h2>
+      <div class="depo_lista"></div>
+    </div>
+  </section>
+
+  <!-- 9. VISITA (momento: o círculo cresce e revela a cidade) -->
+  <section class="visita" id="visita" data-tema="escuro">
+    <div class="visita_palco">
+      <div class="visita_circulo" aria-hidden="true"></div>
+      <div class="visita_texto">
+        <p class="rotulo">Consultório</p>
+        <h2 class="titulo">Visite o consultório em <em>Ibirapuã</em></h2>
+        <p class="visita_end">R. Nilson Mendes Andrade, 213 · Centro · Ibirapuã-BA</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. CONTATO -->
+  <section class="contato" id="contato" data-tema="claro">
+    <div class="wrap contato_grade">
+      <div class="contato_cabeca">
+        <p class="rotulo">Presencial e online</p>
+        <h2 class="titulo">Vamos <em>conversar?</em></h2>
+        <p class="texto">Me conta o que você procura. A mensagem abre no seu WhatsApp para você conferir antes de enviar.</p>
+      </div>
+
+      <form class="form" id="form-contato" novalidate>
+        <div class="campo">
+          <label for="f-nome">Seu nome</label>
+          <input id="f-nome" name="nome" type="text" autocomplete="name" required aria-describedby="e-nome">
+          <p class="erro" id="e-nome" hidden>Escreva o seu nome.</p>
+        </div>
+        <div class="campo">
+          <label for="f-interesse">Tenho interesse em</label>
+          <select id="f-interesse" name="interesse" required aria-describedby="e-interesse">
+            <option value="">Escolha uma opção</option>
+            <option>Emagrecimento</option>
+            <option>Hipertrofia</option>
+            <option>Reeducação alimentar</option>
+            <option>Nutrição comportamental</option>
+            <option>Avaliação com bioimpedância</option>
+            <option>Outro assunto</option>
+          </select>
+          <p class="erro" id="e-interesse" hidden>Escolha o que você procura.</p>
+        </div>
+        <fieldset class="campo campo--opcoes">
+          <legend>Prefiro atendimento</legend>
+          <label class="opcao"><input type="radio" name="modalidade" value="presencial" checked><span>Presencial</span></label>
+          <label class="opcao"><input type="radio" name="modalidade" value="online"><span>Online</span></label>
+        </fieldset>
+        <div class="campo">
+          <label for="f-msg">Mensagem <span class="opcional">(opcional)</span></label>
+          <textarea id="f-msg" name="mensagem" rows="3"></textarea>
+        </div>
+        <button class="btn btn--escuro" type="submit">Abrir conversa no WhatsApp <span aria-hidden="true">↗</span></button>
+      </form>
+
+      <aside class="visita_cartao" aria-label="Endereço e contatos">
+        <div class="mapa">
+          <iframe title="Mapa do consultório da Laysa Tavares em Ibirapuã-BA" src="https://www.google.com/maps?q=R.%20Nilson%20Mendes%20Andrade%2C%20213%2C%20Ibirapu%C3%A3%20-%20BA&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <p class="visita_cartao_end">R. Nilson Mendes Andrade, 213<br>Centro · Ibirapuã-BA</p>
+        <div class="rotas">
+          <a class="btn btn--linha" href="https://www.google.com/maps/dir/?api=1&amp;destination=R.%20Nilson%20Mendes%20Andrade%2C%20213%2C%20Ibirapu%C3%A3%20-%20BA" target="_blank" rel="noopener noreferrer">Google Maps</a>
+          <a class="btn btn--linha" href="https://waze.com/ul?q=R.%20Nilson%20Mendes%20Andrade%2C%20213%2C%20Ibirapu%C3%A3%20-%20BA&amp;navigate=yes" target="_blank" rel="noopener noreferrer">Waze</a>
+        </div>
+        <ul class="contatos">
+          <li><a href="https://wa.me/5573982141269" target="_blank" rel="noopener noreferrer">WhatsApp (73) 98214-1269</a></li>
+          <li><a href="https://instagram.com/laysatavarees.nutri" target="_blank" rel="noopener noreferrer">Instagram @laysatavarees.nutri</a></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape" data-tema="escuro">
+  <div class="wrap">
+    <img class="rodape_logo" src="../assets/img/logo-claro.png" width="1599" height="465" loading="lazy" alt="Laysa Tavares Nutricionista">
+    <div class="rodape_cols">
+      <div>
+        <p class="rotulo">Consultório</p>
+        <p>R. Nilson Mendes Andrade, 213<br>Centro · Ibirapuã-BA</p>
+      </div>
+      <div>
+        <p class="rotulo">Contato</p>
+        <p><a href="https://wa.me/5573982141269" target="_blank" rel="noopener noreferrer">(73) 98214-1269</a><br><a href="https://instagram.com/laysatavarees.nutri" target="_blank" rel="noopener noreferrer">@laysatavarees.nutri</a></p>
+      </div>
+      <div>
+        <p class="rotulo">Navegue</p>
+        <p><a href="#metodo">Método</a><br><a href="#atendimentos">Atendimentos</a><br><a href="#sobre">Sobre</a></p>
+      </div>
+    </div>
+    <div class="rodape_base">
+      <p>© 2026 Laysa Tavares Nutricionista<span data-crn hidden> · CRN-5 <!-- número --></span></p>
+      <a href="#inicio">Voltar ao início ↑</a>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-flutua" href="https://wa.me/5573982141269?text=Ol%C3%A1%2C%20Laysa!%20Vim%20pelo%20site%20e%20quero%20agendar%20uma%20consulta." target="_blank" rel="noopener noreferrer" aria-label="Agendar pelo WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.4-4.7A8.5 8.5 0 1 1 20.5 11.7Z"/><path d="M8.4 8.1c-.4.2-.9.9-.9 1.5 0 1.5 2.8 4.9 5.7 5.8.7.2 1.5-.1 2-.6l.6-.8-2.1-1-.8.8c-1.5-.6-2.5-1.6-3.1-3.1l.7-.7-1.1-2Z"/></svg>
+</a>
+
+<script src="../assets/vendor/gsap.min.js" defer></script>
+<script src="../assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="../assets/vendor/SplitText.min.js" defer></script>
+<script src="../assets/vendor/lenis.min.js" defer></script>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>
